@@ -1,12 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.10.1/.schema/devbox.schema.json",
-  "packages": [
-    "nodejs-slim@20.11.1",
-    "libuuid@latest"
-  ],
-  "env": {
-    "LD_LIBRARY_PATH": "pkgs.lib.makeLibraryPath [pkgs.libuuid];"
+  "packages": {
+    "libuuid": {
+      "version": "latest",
+      "outputs": ["lib"]
+    },
+    "nodejs":     "20.11",
+    "pkg-config": "latest",
+    "pixman":     "latest",
+    "cairo": {
+      "version": "latest",
+      "outputs": ["dev"]
+    },
+    "freetype": {
+      "version": "latest"
+    },
+    "glib": {
+      "version": "latest",
+      "outputs": ["out"]
+    }
   },
+  "env": {"LD_LIBRARY_PATH": "$DEVBOX_PACKAGES_DIR/lib"},
   "shell": {
     "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
     "scripts": {
@@ -14,4 +28,3 @@
     }
   }
 }
-
